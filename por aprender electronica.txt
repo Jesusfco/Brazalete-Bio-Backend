@@ -1,0 +1,14 @@
+Lista de cosas por aprender
+-Como usar el GPS
+-Como usar el modulo Bluetoo -recibir datos - mandar datos
+-Como usar el modulo GSM
+ ---Mandar Mnesajes
+ ---Recibir Mensajes
+ ---Mandar POST a servidor
+-Obtener ritmo cardiaco
+-Carga de bateria facil usando cargador de celular 5v
+---Detener carga cuando la bateria este llena
+---Obtener porcentaje de carga de la bateria
+-Buscar y aprender a utilizar sensor de pasos(o como se llanme)
+-pulsera no se quita facilmente(Pensar en idea)
+-Diseño de Pulsera

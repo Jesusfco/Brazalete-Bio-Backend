@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/resetPassword', 'VisitorController@resetPassword');
+Route::post('/resetPassword', 'VisitorController@sentTokenReset');
+
+Route::get('/resetPassword/{token}', 'VisitorController@resetPassword2');
+Route::post('/resetPassword/{token}', 'VisitorController@updatePassword');

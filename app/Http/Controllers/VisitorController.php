@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\User;
 use App\Reset;
 
 class VisitorController extends Controller
@@ -84,5 +86,35 @@ class VisitorController extends Controller
           
         return redirect('login');
         
+    }
+
+    public function login() {
+        
+        if (Auth::check()) {
+            return redirect('app');
+        }
+        
+        return view('visitor/login');
+    }
+
+    public function signin(Request $re) {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]) ) {
+
+            if(Auth::user()->user_type < 4 || Auth::user()->status != 1) {
+
+                Auth::logout(); 
+                return back();
+            }
+
+            return redirect('/app/welcome');
+
+        }
+
+        return back();
     }
 }

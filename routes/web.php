@@ -12,8 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');    return view('welcome');
 });
+
+Route::get('/login', 'VisitorController@login');
+Route::post('/login', 'VisitorController@signin');
 
 Route::get('/resetPassword', 'VisitorController@resetPassword');
 Route::post('/resetPassword', 'VisitorController@sentTokenReset');

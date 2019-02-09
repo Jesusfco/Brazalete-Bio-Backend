@@ -17,9 +17,14 @@ Route::get('/', function () {
 
 Route::get('/login', 'VisitorController@login');
 Route::post('/login', 'VisitorController@signin');
+Route::get('/logout', 'VisitorController@logout');
 
 Route::get('/resetPassword', 'VisitorController@resetPassword');
 Route::post('/resetPassword', 'VisitorController@sentTokenReset');
 
 Route::get('/resetPassword/{token}', 'VisitorController@resetPassword2');
 Route::post('/resetPassword/{token}', 'VisitorController@updatePassword');
+
+Route::get('/app', 'VisitorController@redirectAnalisis');
+
+Route::get('app/usuarios', 'Admin\UsersController@list');

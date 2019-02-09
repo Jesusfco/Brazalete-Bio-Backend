@@ -27,4 +27,23 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function user_type_view(){
+        if($this->user_type == 1) return 'Monitoreados';
+        else if($this->user_type == 2) return 'Tutores';
+        else if($this->user_type == 3) return 'Externos';
+        else if($this->user_type == 4) return 'Administrador';
+        else return  '';        
+    }
+
+    public function status_view() {
+        if($this->status == 1) return 'Activo';
+        else if($this->status == 0) return 'Inactivo';
+    }
+
+    public function scopeSearch($query, $name) 
+    {
+        // $n = $query->where('name', 'LIKE', "%$name%")->get();
+        return $query->where('name', 'LIKE', "%$name%");
+    }
 }

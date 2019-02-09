@@ -98,12 +98,12 @@ class VisitorController extends Controller
     }
 
     public function signin(Request $re) {
-        $this->validate($request, [
+        $this->validate($re, [
             'email' => 'required',
             'password' => 'required'
         ]);
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]) ) {
+        if(Auth::attempt(['email' => $re->email, 'password' => $re->password]) ) {
 
             if(Auth::user()->user_type < 4 || Auth::user()->status != 1) {
 
@@ -111,10 +111,31 @@ class VisitorController extends Controller
                 return back();
             }
 
-            return redirect('/app/welcome');
+            return redirect('/app');
 
         }
 
         return back();
+    }
+
+    public function redirectAnalisis() {
+
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            // if(U)
+            return redirect('app/usuarios');
+        }
+        
+        return view('visitor/login');
+
+    }
+
+    public function logout() {
+
+        if (Auth::check()) Auth::logout(); 
+
+        return view('visitor/login');
+
     }
 }

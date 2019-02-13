@@ -12,11 +12,11 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     *  
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'phone', 'user_type', 'status', 'img'
     ];
 
     /**
@@ -28,8 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function assosiations(){
+        return $this->hasMany('App\UserAssosiation', 'user_id', 'id');
+    }
+
     public function user_type_view(){
-        if($this->user_type == 1) return 'Monitoreados';
+        if($this->user_type == 1) return 'Hijo';
         else if($this->user_type == 2) return 'Tutores';
         else if($this->user_type == 3) return 'Externos';
         else if($this->user_type == 4) return 'Administrador';
@@ -46,4 +50,13 @@ class User extends Authenticatable
         // $n = $query->where('name', 'LIKE', "%$name%")->get();
         return $query->where('name', 'LIKE', "%$name%");
     }
+
+    public function countAssosiations(){
+        if(isset($this->assosiations)) {
+            return count($this->assosiations);
+        }
+
+        return 0;
+    }
+
 }

@@ -4,17 +4,12 @@
 @endsection
 @section('content')            
 
-<a href="{{ url('app/usuarios/crear') }}"
-data-position="left" data-tooltip="Agregar Nuevo Uusario"
-    class="btn-floating btn-large orange newBtn tooltipped">
-    <i class="material-icons">add</i>
-    </a>   
             <div class="panel panel-default" id="principal">
                 <div class="panel-heading">
                     <div class="row">
                     
                     
-                    <h5>Usuarios >> Lista</h5>        
+                    <h5>Asosiaciones >> Lista</h5>        
                              
                     
                     
@@ -38,10 +33,8 @@ data-position="left" data-tooltip="Agregar Nuevo Uusario"
                         <thead>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Correo</th>
-                            
-                            <th>Tipo</th>
-                            <th>Status</th>
+                            <th>Correo</th>                                                        
+                            <th>Assosiados</th>
                             <th>Acciones</th>
                         </thead>
                         <tbody>
@@ -51,13 +44,12 @@ data-position="left" data-tooltip="Agregar Nuevo Uusario"
                             <td>{{ $n->id }}</td>
                             <td>{{ $n->name }}</td>
                             <td>{{ $n->email }}</td>                            
-                            <td>{{ $n->user_type_view() }}</td>
+                            <td>{{ $n->countAssosiations() }}</td>
                             <td>{{ $n->status_view() }}</td>
                             <td>
                                 
-                                <a href="{{ url('app/usuarios/editar/'.$n->id.'') }}" class="btn yellow">Editar </a>
-                                <a  onclick="eliminar({{ $n->id }}, '{{ $n->name }}')" class="btn red"> Eliminar</a>
-                                <a href="{{ url('app/usuarios/ver/'. $n->id) }}" class="btn green">Ver</a>
+                                <a href="{{ url('app/asosiaciones/crear/'.$n->id.'') }}" class="btn yellow">Crear </a>                                
+                                <a href="{{ url('app/asosiaciones/ver/'. $n->id) }}" class="btn green">Ver</a>
                             </td>
                         </tr>
                         

@@ -32,7 +32,7 @@
             <div class="links">            
                 
                 <a href="{{ url('app/usuarios')}}"><p>Usuarios</p></a>                                                    
-           
+                <a href="{{ url('app/asosiaciones')}}"><p>Asosiaciones</p></a>
                 <a href="{{ url('app/perfil')}}"><p>Mi Perfil</p></a>            
                 <a href="{{ url('logout')}}"><p>Cerrar Sesión<p></a>
             </div>

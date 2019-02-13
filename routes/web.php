@@ -27,4 +27,27 @@ Route::post('/resetPassword/{token}', 'VisitorController@updatePassword');
 
 Route::get('/app', 'VisitorController@redirectAnalisis');
 
-Route::get('app/usuarios', 'Admin\UsersController@list');
+Route::namespace('Admin')->group(function () {
+
+    Route::prefix('app/usuarios')->group(function () {
+        
+        Route::get('/', 'UsersController@list');
+        Route::get('crear', 'UsersController@create');
+        Route::post('crear', 'UsersController@store');
+        Route::get('destroy/{id}', 'UsersController@destroy');
+        Route::get('editar/{id}', 'UsersController@edit');
+        Route::post('editar/{id}', 'UsersController@update');
+
+    });
+    
+    Route::prefix('app/asosiaciones')->group(function () {
+        
+        Route::get('/', 'UserAssosiationsController@list');
+        Route::get('/sugest', 'UserAssosiationsController@sugest');
+        Route::get('crear/{id}', 'UserAssosiationsController@create');
+        Route::post('crear/{id}', 'UserAssosiationsController@store');
+        Route::get('destroy/{id}', 'UserAssosiationsController@destroy');        
+        
+    });
+
+});

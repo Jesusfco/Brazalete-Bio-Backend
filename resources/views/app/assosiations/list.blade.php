@@ -44,7 +44,7 @@
                             <td>{{ $n->id }}</td>
                             <td>{{ $n->name }}</td>
                             <td>{{ $n->email }}</td>                            
-                            <td>{{ $n->countAssosiations() }}</td>
+                            <td>{{ $n->assosiations_count }}</td>
                             <td>{{ $n->status_view() }}</td>
                             <td>
                                 

@@ -135,7 +135,7 @@ class VisitorController extends Controller
 
         if (Auth::check()) Auth::logout(); 
 
-        return view('visitor/login');
+        return redirect('login');
 
     }
 }

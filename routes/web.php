@@ -47,6 +47,12 @@ Route::namespace('Admin')->group(function () {
         Route::get('crear/{id}', 'UserAssosiationsController@create');
         Route::post('crear/{id}', 'UserAssosiationsController@store');
         Route::get('destroy/{id}', 'UserAssosiationsController@destroy');        
+        Route::get('ver/{id}', 'UserAssosiationsController@show');
+
+        Route::get('ver/{id}/permission/{i}', 'UserAssosiationsController@permission');
+        Route::get('ver/{id}/destroy/{i}', 'UserAssosiationsController@destroy');
+
+        
         
     });
 

@@ -46,17 +46,8 @@ class User extends Authenticatable
     }
 
     public function scopeSearch($query, $name) 
-    {
-        // $n = $query->where('name', 'LIKE', "%$name%")->get();
+    {        
         return $query->where('name', 'LIKE', "%$name%");
-    }
-
-    public function countAssosiations(){
-        if(isset($this->assosiations)) {
-            return count($this->assosiations);
-        }
-
-        return 0;
-    }
+    }   
 
 }

@@ -17,4 +17,9 @@ class UserAssosiation extends Model
     public function assosiated() {
         return $this->hasOne('App\User', 'id', 'assosiated_id');
     }
+
+    public function confirmedView() {
+        if($this->confirmed) return 'Permitido';
+        return 'Cancelado';
+    }
 }

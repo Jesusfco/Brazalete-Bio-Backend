@@ -13,7 +13,7 @@ class UserAssosiationsController extends Controller
     public function list(Request $re) {
         $users = User::search($re->name)
             ->where('user_type', 1)
-            ->with('assosiations:id,user_id')
+            ->withCount('assosiations')
             ->orderBy('name','asc')
             ->paginate(15);
         return view('app/assosiations/list')->with(['users'=> $users]);
@@ -43,5 +43,23 @@ class UserAssosiationsController extends Controller
             ->limit(8)
             ->get()
         );
+    }
+
+    public function show($id) {
+        $user = User::where('id',$id)->with('assosiations.assosiated')->first();
+        return view('app/assosiations/show')->with(['user'=> $user]);
+    }
+
+    public function permission($id, $i) {        
+        $assosiated = UserAssosiation::find($i);
+        $assosiated->confirmed = !$assosiated->confirmed;
+        $assosiated->save();
+        return back()->with('msj', 'El permiso de asosiacion ha sido actualizado');
+    }
+
+    public function destroy($id, $i) {
+        $assosiated = UserAssosiation::find($i);
+        $assosiated->delete();
+        return back()->with('msj', 'El permiso de asosiacion ha sido eliminado correctamente');
     }
 }

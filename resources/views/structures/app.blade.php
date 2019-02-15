@@ -16,9 +16,9 @@
 </head>
 <body>
 <div id="app">
-    <nav class="black">
+    {{-- <nav class="black">
         <a class="menuIcon"  id="activeMovMenu">    <i class="fas fa-bars"></i></a>
-    </nav>
+    </nav> --}}
     <div class="navegation inactive opacity" id="movMenu">
 
         <div class="background" id="movMenuBackground"></div>

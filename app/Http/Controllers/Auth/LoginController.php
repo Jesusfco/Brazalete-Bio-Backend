@@ -7,11 +7,17 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Token;
 
 class LoginController extends Controller
 {       
 
     public function loginApi(Request $re) {
+        
+        $token = new Token();
+        $token->generateKey();
+        // return $token->$token;
+        return $token->makeToken();
 
         if(Auth::attempt(['email' => $re->email, 'password' => $re->password]) ) {
 

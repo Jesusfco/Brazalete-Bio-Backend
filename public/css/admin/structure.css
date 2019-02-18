@@ -1,7 +1,7 @@
 .navegation {
     position: fixed;
     width: 280px;
-    background: black;
+    background: #cc0e00;
     height: 100vh;
     top: 0;
 }
@@ -15,6 +15,7 @@
 .navegation .links a p {
     display: block;
     padding: 0 20px;
+    color: white
 }
 
 .content {

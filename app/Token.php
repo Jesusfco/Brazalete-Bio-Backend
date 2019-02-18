@@ -15,8 +15,16 @@ class Token extends Model
         $this->expire_time = $this->generateExpireTime();
     }
 
-    private function makeToken(){
-        return '';
+    public function makeToken(){
+
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 100; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+
     }
 
     private function generateExpireTime() {

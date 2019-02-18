@@ -17,4 +17,4 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::post('login', 'Auth\LoginController@loginApi');
+Route::get('login', 'Auth\LoginController@loginApi');

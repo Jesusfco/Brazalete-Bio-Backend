@@ -13,18 +13,15 @@ class LoginController extends Controller
 {       
 
     public function loginApi(Request $re) {
-        
-        $token = new Token();
-        $token->generateKey();
-        // return $token->$token;
-        return $token->makeToken();
+                        
 
         if(Auth::attempt(['email' => $re->email, 'password' => $re->password]) ) {
 
             $token = new Token();
             $token->user_id = Auth::id();
+            
             $token->generateKey();
-            $token->save();
+            // $token->save();
 
             return response()->json(['token', $token->token, 'user', Auth::user()]);
         } 

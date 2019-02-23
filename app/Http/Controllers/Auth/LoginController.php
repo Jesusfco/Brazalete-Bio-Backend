@@ -21,13 +21,25 @@ class LoginController extends Controller
             $token->user_id = Auth::id();
             
             $token->generateKey();
-            // $token->save();
+            $token->save();
 
             return response()->json(['token', $token->token, 'user', Auth::user()]);
         } 
 
         return response()->json(['msj' => 'Credentials Incorrect'], 403);
 
+    }
+
+    public function checkToken(Request $re) {
+        
+        if($re->token == NULL) 
+        return response()->json(['msj', 'TOKEN NULL'], 401);
+        
+        if(Token::verify($re->token)) {
+            return response()->json(Token::getUser($re->token));
+        }
+
+        return response()->json(['msj', 'Token invalid'], 403);
     }
 
 }

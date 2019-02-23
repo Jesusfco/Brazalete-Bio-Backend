@@ -28,11 +28,23 @@ class Token extends Model
     }
 
     private function generateExpireTime() {
-        return '';
+        return '2020-12-01 01:00:00';
     }
 
-    public function assosiations(){
-        return $this->hasMany('App\User', 'id', 'user_id');
+    public function user(){
+        return $this->belongsTo('App\User', 'id', 'user_id');
     }
     
+    public static function verify($string) {
+        $token = Token::where('token', $string)->first();
+
+        if($token == NULL) return false;
+
+        return true;
+    }
+
+    public static function getUser($string) {
+        $token = Token::where('token', $string)->first();
+        return User::find($token->user_id);        
+    }
 }

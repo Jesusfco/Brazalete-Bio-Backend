@@ -18,3 +18,4 @@ use Illuminate\Http\Request;
 // });
 
 Route::post('login', 'Auth\LoginController@loginApi');
+Route::post('checkAuth', 'Auth\LoginController@checkToken');

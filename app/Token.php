@@ -47,4 +47,8 @@ class Token extends Model
         $token = Token::where('token', $string)->first();
         return User::find($token->user_id);        
     }
+
+    public static function getToken($string) {
+        return Token::where('token', $string)->first();
+    }
 }

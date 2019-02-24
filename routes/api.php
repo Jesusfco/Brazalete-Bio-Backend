@@ -23,3 +23,5 @@ Route::post('checkAuth', 'Auth\LoginController@checkToken');
 Route::post('sms/saveLocation', 'SMS\SMSController@saveLocation');
 Route::get('sms/saveLocation', 'SMS\SMSController@saveLocation');
 
+Route::post('location/store', 'Api\LocationController@saveLocation');
+

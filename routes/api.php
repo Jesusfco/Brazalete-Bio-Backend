@@ -23,5 +23,20 @@ Route::post('checkAuth', 'Auth\LoginController@checkToken');
 Route::post('sms/saveLocation', 'SMS\SMSController@saveLocation');
 Route::get('sms/saveLocation', 'SMS\SMSController@saveLocation');
 
-Route::post('location/store', 'Api\LocationController@saveLocation');
 
+
+Route::namespace('Api')->group(function () { 
+
+    Route::prefix('location')->group(function () {
+
+        Route::post('store', 'LocationController@saveLocation');
+        Route::post('lastLocation', 'LocationController@getLastLocation');
+        Route::post('date', 'LocationController@getLocationByDate');
+
+    });
+
+    Route::prefix('assosiations')->group(function () {
+        Route::post('myAssosiations', 'AssosiationsController@getMyAssosiations');
+    });
+
+});

@@ -13,7 +13,7 @@ class AssosiationsController extends Controller
 
         $token = Token::getToken($re->token);
 
-        $assosiations = UserAssosiations::where('user_id', $token->user_id)
+        $assosiations = UserAssosiation::where('user_id', $token->user_id)
                         ->orWhere('assosiated_id', $token->user_id)
                         ->with(['user', 'assosiated'])->get();
 

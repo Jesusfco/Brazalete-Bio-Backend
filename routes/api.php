@@ -39,4 +39,6 @@ Route::namespace('Api')->group(function () {
         Route::post('myAssosiations', 'AssosiationsController@getMyAssosiations');
     });
 
+    
+
 });

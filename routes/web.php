@@ -15,6 +15,9 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('sms', 'SMS\SMSController@test');
+Route::post('sms', 'SMS\SMSController@test');
+
 Route::get('/login', 'VisitorController@login');
 Route::post('/login', 'VisitorController@signin');
 Route::get('/logout', 'VisitorController@logout');

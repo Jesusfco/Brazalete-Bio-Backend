@@ -45,10 +45,7 @@
     @endif
 
     <script src="https://code.jquery.com/ui/1.9.1/jquery-ui.min.js" integrity="sha256-UezNdLBLZaG/YoRcr48I68gr8pb5gyTBM+di5P8p6t8=" crossorigin="anonymous"></script>  
-    <script>
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
-        
+    <script>                
   
         function validateForm() {
   
@@ -89,14 +86,12 @@
   
             success: function(data) {
               console.log(data);
-              
-  
+                
               let works = [];
               for(let d of data) {
                 works.push({value: d.name, data: d.id});
-              }
+              }                
               
-  
               response(works);
             }
   

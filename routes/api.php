@@ -20,6 +20,10 @@ use Illuminate\Http\Request;
 Route::post('login', 'Auth\LoginController@loginApi');
 Route::post('checkAuth', 'Auth\LoginController@checkToken');
 
+
+Route::get('sms', 'SMS\SMSController@test');
+Route::post('sms', 'SMS\SMSController@test');
+
 Route::post('sms/saveLocation', 'SMS\SMSController@saveLocation');
 Route::get('sms/saveLocation', 'SMS\SMSController@saveLocation');
 

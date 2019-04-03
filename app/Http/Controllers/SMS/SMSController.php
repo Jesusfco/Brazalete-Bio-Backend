@@ -22,4 +22,16 @@ class SMSController extends Controller {
         return response()->json(true);
 
     }
+
+    public function test(Request $re) { 
+
+        if(isset($re->user_id)) {
+            return response()->json('FUNCIONA :D');
+        }
+        
+
+        return response()->json('ESTAS EN LA PAGINA');
+        
+
+    }
 }
